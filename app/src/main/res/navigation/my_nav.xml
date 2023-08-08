@@ -44,4 +44,9 @@
             android:id="@+id/action_forgotPasswordFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/changPasswordFragment"
+        android:name="com.example.drivein.ChangPasswordFragment"
+        android:label="fragment_chang_password"
+        tools:layout="@layout/fragment_chang_password" />
 </navigation>
