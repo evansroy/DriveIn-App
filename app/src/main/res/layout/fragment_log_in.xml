@@ -38,7 +38,7 @@
             android:id="@+id/txtCancelor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Are you an Employer ?"
+            android:text="Are you an Instructor ?"
             android:textColor="#858585"
             android:textStyle="normal"
             android:textSize="18sp"

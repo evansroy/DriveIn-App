@@ -12,10 +12,13 @@
         android:layout_margin="5dp"
         android:padding="5dp"
         android:layout_gravity="center">
+
+        <!-- Title -->
         <TextView
             android:id="@+id/txtCreateNewAccount"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
             android:text="Create New Account"
             android:textColor="#2196F3"
             android:textStyle="bold"
@@ -23,23 +26,29 @@
             android:textAlignment="center"
             android:padding="10dp"/>
 
-        <TextView
-            android:id="@+id/txtEmail"
-            android:layout_width="wrap_content"
+        <!-- Full Name Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutFullNames"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/layoutEmail"
             app:layout_constraintTop_toBottomOf="@id/txtCreateNewAccount"
-            android:layout_marginLeft="10dp"/>
+            android:layout_margin="5dp"
+            android:padding="5dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFullNames"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#F2F4F7"
+                android:hint="Enter Your Full Name"
+                android:background="@drawable/rounded_corner"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Email Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txtEmail"
+            app:layout_constraintTop_toBottomOf="@id/layoutFullNames"
             android:layout_margin="5dp"
             android:padding="5dp">
             <com.google.android.material.textfield.TextInputEditText
@@ -50,27 +59,13 @@
                 android:hint="Enter Your Email"
                 android:background="@drawable/rounded_corner"/>
         </com.google.android.material.textfield.TextInputLayout>
-        <TextView
-            android:id="@+id/txtPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/layoutPasswordReg"
-            app:layout_constraintTop_toBottomOf="@id/layoutEmail"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="20dp"
-            />
 
+        <!-- Password Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutPasswordReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txtPassword"
+            app:layout_constraintTop_toBottomOf="@id/layoutEmail"
             android:layout_margin="5dp"
             android:padding="5dp"
             app:endIconMode="custom"
@@ -86,42 +81,48 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/txtConfirmPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Confirm Password"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/layoutConfirmPassword"
-            app:layout_constraintTop_toBottomOf="@id/layoutPasswordReg"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="20dp"
-            />
-
+        <!-- Confirm Password Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txtConfirmPassword"
+            app:layout_constraintTop_toBottomOf="@id/layoutPasswordReg"
             android:layout_margin="5dp"
             android:padding="5dp"
             app:endIconMode="custom"
             app:endIconDrawable="@drawable/password_icon"
             app:endIconTint="#2196F3">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmailLog"
+                android:id="@+id/etConfirmPasswordRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
                 android:hint="Repeat Password"
                 android:textColorHint="#F2F4F7"/>
-
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- User Type Radio Buttons -->
+        <RadioGroup
+            android:id="@+id/radioGroupUserType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/layoutConfirmPassword"
+            android:layout_marginTop="10dp">
+            <RadioButton
+                android:id="@+id/radioButtonLearner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Learner"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/radioButtonInstructor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instructor"/>
+        </RadioGroup>
+
+        <!-- Register Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
@@ -129,11 +130,11 @@
             android:background="@drawable/button"
             android:text="Register"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/layoutConfirmPassword"
+            app:layout_constraintTop_toBottomOf="@id/radioGroupUserType"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="15dp"/>
 
-
+        <!-- Link to Log In -->
         <LinearLayout
             android:id="@+id/layoutHaveAccount"
             android:layout_width="wrap_content"
